@@ -1,0 +1,23 @@
+version: "3"
+
+volumes:
+  postgresql_data:
+    driver: local
+  api_data:
+    driver: local
+  portainer_data:
+    driver: local
+
+services:
+  database:
+    container_name: suficiencia-container
+    restart: always
+    image: postgres:12.3
+    environment:
+      POSTGRES_DB: provasuficiencia
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
